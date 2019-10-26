@@ -1,0 +1,382 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+#bgimage {
+    color: whitesmoke;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+img {
+    background-color: transparent;
+    display: visibility;
+    display: inline-block;
+    width: 20%;
+    height: 25%;
+    border: 10px 5px 5px 10px;
+    padding: 2%;
+}
+
+
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/*custom nav bar started*/
+
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase
+}
+
+.navbar .nav {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.2rem
+}
+
+.navbar-inverse {
+    background-color: #003300
+}
+
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+        background-color: #002200
+    }
+
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+        background-color: #003300
+    }
+
+.dropdown-menu {
+    background-color: #006B00
+}
+
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus {
+        background-color: #002200
+    }
+
+.navbar-inverse {
+    background-image: none;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    background-image: none;
+}
+
+.navbar-inverse {
+    border-color: #003300
+}
+
+    .navbar-inverse .navbar-brand {
+        color: #FFFFFF
+    }
+
+        .navbar-inverse .navbar-brand:hover {
+            color: #FFCC00
+        }
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #FFFFFF
+    }
+
+        .navbar-inverse .navbar-nav > li > a:hover,
+        .navbar-inverse .navbar-nav > li > a:focus {
+            color: #FFCC00
+        }
+
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+        color: #FFCC00
+    }
+
+        .navbar-inverse .navbar-nav > .active > a:hover,
+        .navbar-inverse .navbar-nav > .active > a:focus {
+            color: #FFCC00
+        }
+
+.dropdown-menu > li > a {
+    color: #FFFFFF
+}
+
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus {
+        color: #FFCC00
+    }
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-top-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
+    border-top-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-bottom-color: #FFFFFF
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
+    border-bottom-color: #FFFFFF
+}
+
+
+
+
+
+
+
+@import "compass/css3";
+
+@import url(https://fonts.googleapis.com/css?family=Merriweather);
+
+$red: #e74c3c;
+
+*,
+*:before,
+*:after {
+    @include box-sizing(border-box);
+}
+
+html, body {
+    font-family: 'Merriweather', sans-serif;
+    padding: 1em;
+}
+
+h1 {
+    text-align: center;
+    color: #a8a8a8;
+    @include text-shadow(1px 1px 0 rgba(white, 1));
+}
+
+form {
+    max-width: 600px;
+    text-align: center;
+    margin: 20px auto;
+    input, textarea
+
+{
+    border: 0;
+    outline: 0;
+    padding: 1em;
+    @include border-radius(8px);
+    display: block;
+    width: 100%;
+    margin-top: 1em;
+    font-family: 'Merriweather', sans-serif;
+    @include box-shadow(0 1px 1px rgba(black, 0.1));
+    resize: none;
+    &:focus
+
+{
+    @include box-shadow(0 0px 2px rgba($red, 1)!important);
+}
+
+}
+
+#input-submit {
+    color: white;
+    background: $red;
+    cursor: pointer;
+    &:hover
+
+{
+    @include box-shadow(0 1px 1px 1px rgba(#aaa, 0.6));
+}
+
+}
+
+textarea {
+    height: 126px;
+}
+
+}
+
+
+.half {
+    float: left;
+    width: 48%;
+    margin-bottom: 1em;
+}
+
+.right {
+    width: 50%;
+}
+
+.left {
+    margin-right: 2%;
+}
+
+
+@media (max-width: 480px) {
+    .half {
+        width: 100%;
+        float: none;
+        margin-bottom: 0;
+    }
+}
+
+
+/* Clearfix */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+#fly {
+    display: block;
+    margin: 0px auto;
+    width: 130px;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #fff;
+    background: #ee8a65;
+}
+
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+
+.btn1 {
+    float: left;
+}
+
+.btn2 {
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ul {
+    text-align: left;
+    display: inline;
+    margin: 0;
+
+    list-style: none;
+}
+
+    ul li {
+        display: inline-block;
+        margin-right: -1px;
+        position: relative;
+
+        background: #003300;
+        cursor: pointer;
+        color: black;
+        height: 40px;
+        width: auto;
+        text-align: center;
+    }
+
+        ul li a {
+            color: black;
+        }
+
+        ul li:hover {
+            background: #003300;
+            color: #fff;
+            height: 45px;
+        }
+
+        ul li a:hover {
+            color: #fff;
+        }
+
+        ul li ul {
+            padding: 0;
+            padding-top:1px;
+            position: absolute;
+            left: 0;
+            width: 160px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            display: none;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+            ul li ul li {
+                background: #004f00;
+                display: block;
+                color: #CD324F;
+                height: 35px;
+            }
+
+                ul li ul li:hover {
+                    background: #004f00;
+                    height: 35px;
+                }
+
+        ul li:hover ul {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }

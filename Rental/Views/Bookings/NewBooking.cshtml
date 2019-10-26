@@ -1,0 +1,114 @@
+﻿@model Rental.ViewModels.BookingViewModel
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+<h2>Booking</h2>
+@{
+
+    List<SelectListItem> cars = new List<SelectListItem>();
+    foreach (var car in ViewBag.carList)
+    {
+        cars.Add(new SelectListItem() { Text = car.CarMake + " - " + car.CarModel, Value = car.CarId.ToString() });
+    }
+
+}
+
+@using (Html.BeginForm("Save", "Bookings"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+
+    <div class="form-group" id="" style="text-align:left; margin-top:40px">
+        @Html.Label("Available Cars")
+
+
+        <table id="carsTable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Car Make </th>
+                    <th>Car Model</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Number of Seats</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var car in ViewBag.carList)
+                {
+                    <tr>
+                        <td>
+                            @car.CarMake
+                        </td>
+                        <td>
+                            @car.CarModel
+                        </td>
+                        <td>
+                            @car.UnitPrice
+                        </td>
+                        <td>
+                            @car.Quantity
+                        </td>
+                        <td>
+                            @car.NumberofSeats
+                        </td>
+                        <td>
+                            <input type="radio" id=${car.CarId} name="CarId" value=@car.CarId />
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-group" style="text-align:left;">
+        @Html.LabelFor(m => m.StartDate)
+        <input type="date" id="datepicker1" name="StartDate" class="form-control" value=@Model.StartDate>
+        @Html.ValidationMessageFor(m => m.StartDate)
+    </div>
+
+
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(m => m.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.EndDate, "", new { @class = "text-danger" })
+
+    </div>*@
+
+
+
+
+
+    <div class="form-group" style="text-align:left;">
+        @Html.LabelFor(m => m.EndDate)
+        <input type="date" id="datepicker2" name="EndDate" class="form-control" value=@Model.EndDate>
+        @Html.ValidationMessageFor(m => m.EndDate)
+    </div>
+    @Html.HiddenFor(m => m.BookingId)
+    @Html.AntiForgeryToken()
+    <button id="btnSubmit" type="submit" class="btn btn-primary">Save</button>
+}
+@Styles.Render("~/Content/bootstrap-datepicker.min.css")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/datepicker")
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>*
+    <script>
+
+        $(document).ready(function () {
+            $('#EndDate').datepicker({
+                todayHighlight: true,
+                format: 'mm/dd/yyyy',
+                autoclose: ture,
+                startDate: new Date(),
+                endDate: '+1m'
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Waverley Car Rental</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css" id="dark-mode-custom-style"></style>
+    <script src="https://kit.fontawesome.com/ce03b5f4c8.js" crossorigin="anonymous"></script>
+
+    @* This is for the mapbox map. *@
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    @*This is used for the Geocoding Mapbox API*@
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-glgeocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-glgeocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
+    @*bootstrap picker*@
+            <script type="text/javascript" src="/scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/scripts/moment.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap-datetimepicker.*js"></script>
+        
+        
+        
+
+
+</head>
+
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Waverley Car Rental", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
+                    <li>@Html.ActionLink("Cars", "Index", "Cars")</li>
+
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("List Bookings", "Index", "Bookings")</li>
+                        <li>@Html.ActionLink("List Cars", "Index", "Cars")</li>
+                        <li>@Html.ActionLink("List Customer", "Index", "Customers")</li>
+                    }
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <li>@Html.ActionLink("My Bookings", "Index", "Bookings")</li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Waverley Car Rental.<a href="https://cdn.forms-content.sg-form.com/bb777672-ec8e-11e9-8923-b668b76fff19"> Subscribe</a></p>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/lib")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

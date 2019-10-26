@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Rental.Models.Car>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (User.IsInRole("Admin"))
+{
+    <h2>Manage Car List</h2>
+    <p>
+        @Html.ActionLink("New Car", "New", "Cars", null, new { @class = "btn btn-primary" })
+    </p>
+}
+@if (User.IsInRole("Customer"))
+{
+    <h2>Car List</h2>
+}
+
+
+
+<table id="customers" class="table table-bordered table-hover">
+    <thead>
+
+        <tr>
+            <th>Car Make </th>
+            <th>Car Model</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Number of Seats</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>Update</th>
+                <th>Delete</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarMake)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberofSeats)
+            </td>
+                @if (User.IsInRole("Admin"))
+                {
+                <td id="btnUpdate">
+                    @Html.ActionLink("Update", "Update", new { id = item.CarId })
+                </td>
+                <td id="btnDelete">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CarId })
+                </td>
+                }
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@section scripts
+{
+    <script>
+        $("#btnDelete").click((e) => {
+            alert("Are you sure you want to delete this customer?");
+        })
+    </script>
+}
+

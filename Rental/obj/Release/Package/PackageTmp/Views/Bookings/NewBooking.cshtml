@@ -1,0 +1,71 @@
+﻿@model Rental.Models.Booking
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Booking</h2>
+@{
+    List<SelectListItem> carTypes = new List<SelectListItem>();
+    carTypes.Add(new SelectListItem() { Text = "SUV", Value = "SUV" });
+    carTypes.Add(new SelectListItem() { Text = "Sedan", Value = "Sedan" });
+    carTypes.Add(new SelectListItem() { Text = "VAN", Value = "VAN" });
+    carTypes.Add(new SelectListItem() { Text = "UTE", Value = "UTE" });
+}
+
+@using (Html.BeginForm("Save", "Bookings"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+    <div class="form-group" id="">
+        @Html.Label("Car Type")
+        @Html.DropDownList("carTypeList", carTypes, "Select Car Type", new { @class = "form-control" });
+
+    </div>
+    <table id="carsTable" class="table table-bordered table-hover" hidden>
+        <thead>
+            <tr>
+                <th>Car Make </th>
+                <th>Car Model</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Number of Seats</th>
+                <th>Select</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartDate)
+        @Html.TextBoxFor(m => m.StartDate, new { maxlength = "12", size = "16", @class = "date-picker dateRegion" });
+        @Html.ValidationMessageFor(m => m.StartDate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EndDate)
+        @Html.TextBoxFor(m => m.EndDate, new { maxlength = "12", size = "16", @class = "date-picker dateRegion" });
+        @Html.ValidationMessageFor(m => m.EndDate)
+    </div>
+    @Html.HiddenFor(m => m.BookingId)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    @*$("#carTypeList").click((e) => {
+        if (e.target.value == "SUV") {
+            alert("Selected SUV");
+            var carNode = document.createElement("tr");
+             @if(Model.Car.CarModel == "SUV")
+             {
+                  // $("#carsTable").();
+             }
+
+
+        }*@
+    })
+    </script>
+}
